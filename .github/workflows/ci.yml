@@ -1,0 +1,20 @@
+
+name: KnotToday CI Demo
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Check HTML file exists
+        run: test -f index.html
+
+      - name: Validate sample content
+        run: grep -q "Welcome to the CI/CD Demo" index.html
